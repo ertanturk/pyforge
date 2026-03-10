@@ -10,6 +10,7 @@ current project.
 import json
 from typing import cast
 from urllib.error import HTTPError, URLError
+from urllib.parse import urlparse
 from urllib.request import urlopen
 
 from setuptools import setup
@@ -81,9 +82,18 @@ def fetch_latest_version(project_name: str) -> str | None:
     """
 
     url = f"https://pypi.org/pypi/{project_name}/json"
+
+    # Validate the URL scheme and netloc before opening it. This prevents
+    # unexpected schemes (file:, ftp:, etc.) from being used which Bandit
+    # flags as a potential vulnerability (B310).
+    parsed = urlparse(url)
+    if parsed.scheme not in ("https", "http") or not parsed.netloc:
+        return None
+
     try:
-        with urlopen(url) as response:
-            if response.status != 200:
+        with urlopen(url) as response:  # nosec B310 - scheme validated above
+            status = getattr(response, "status", None)
+            if status is not None and status != 200:
                 return None  # Project not found on PyPI
             data = response.read()
 
