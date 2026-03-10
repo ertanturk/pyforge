@@ -8,7 +8,7 @@ dynamic = ["version"]
 description = "A lightweight CLI tool for generating modern Python project structures with best practices built in"
 readme = "README.md"
 requires-python = ">=3.12"
-license = {text = "MIT"}
+license = "MIT"
 dependencies = []
 keywords = [
   "cli",
@@ -29,7 +29,6 @@ classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Intended Audience :: Education",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.12",
@@ -48,7 +47,9 @@ dev = [
     "bandit",
     "pip-audit",
     "pre-commit",
-    "coverage"
+    "coverage",
+    "build",
+    "twine"
 ]
 
 [project.urls]
@@ -91,7 +92,7 @@ omit = ["tests/*", ".venv/*"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 0
+fail_under = 80
 
 [tool.bandit]
 exclude_dirs = ["tests", ".venv"]

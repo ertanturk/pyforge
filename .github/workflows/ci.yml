@@ -32,11 +32,9 @@ jobs:
         run: mypy .
 
       - name: Run security scan (Bandit)
-        continue-on-error: true
         run: bandit -c pyproject.toml -r .
 
       - name: Run dependency vulnerability scan (pip-audit)
-        continue-on-error: true
         run: pip-audit
 
       - name: Run tests with coverage (Pytest)

@@ -10,9 +10,6 @@ include scripts/setup.py
 # Include type stubs marker
 include src/pyforge/py.typed
 
-# Include docs
-recursive-include docs *.md
-
 # Exclude development/test artifacts
 prune .github
 global-exclude __pycache__

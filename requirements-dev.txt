@@ -5,3 +5,5 @@ bandit
 pip-audit
 pre-commit
 coverage
+build
+twine
