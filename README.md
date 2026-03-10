@@ -24,19 +24,20 @@ python -m pip install -e .
 Linux/macOS:
 
 ```bash
-python3 -m pip install --user pyforge
+python3 -m pip install --user pyforge-scaffold
+
 ```
 
 Windows:
 
 ```powershell
-py -m pip install --user pyforge
+py -m pip install --user pyforge-scaffold
 ```
 
 With `pipx`:
 
 ```bash
-pipx install pyforge
+pipx install pyforge-scaffold
 ```
 
 ## Usage
